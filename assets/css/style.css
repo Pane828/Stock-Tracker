@@ -1,0 +1,50 @@
+body, html {
+    height: 100%;
+    text-align: center;
+}
+
+
+.bgimg {
+	background-image: url("https://images.pexels.com/photos/251287/pexels-photo-251287.png?w=1260&h=750&auto=compress&cs=tinysrgb");
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: relative
+	opacity: 0.4;
+}
+
+h1 {
+	font-family: 'Montserrat Subrayada', sans-serif;
+  	font-size: 130px;
+}  
+
+.panel-title{
+	font-size: 2em;
+	font-family: 'Rubik Mono One', sans-serif;
+}
+
+.bigger{
+	color: #1671B0;
+}
+
+th{
+	color: #3DAB51;
+}
+
+th,
+.panel-body,
+.bigger{
+	font-size: 1.25em;
+	opacity: 0.8;
+}
+
+.notme{
+	font-size: 1em;
+}
+
+.form-control{
+	width: 25%;
+	margin: 0 auto;
+}
+
