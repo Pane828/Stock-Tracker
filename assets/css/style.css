@@ -16,8 +16,9 @@ body, html {
 
 h1 {
 	font-family: 'Montserrat Subrayada', sans-serif;
-  	font-size: 130px;
+  	font-size: em;
 }  
+
 
 .panel-title{
 	font-size: 2em;
@@ -46,5 +47,25 @@ th,
 .form-control{
 	width: 25%;
 	margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+    /* For tablets: */
+  	.font-effect-outline {
+  	font-size: 16px;
+
+  }
+  	.panel-heading	{
+	font-size: 16px;
+	height: 20px;
+
+  }
+}
+
+@media only screen and (min-width: 600px) {
+    /* For desktop: */
+    .font-effect-outline {
+  	font-size: 48px;
+	}
 }
 
