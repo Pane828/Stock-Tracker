@@ -28,13 +28,6 @@
         .done(function(response) {
 		  console.log(response);
 		  var quotes = response;
-		  var metaData = [];
-		  for(i in quotes["Meta Data"]) {
-		  	metaData.push(i);
-		  }
-		  var info = quotes["Meta Data"];
-		  var name = info["2. Symbol"];
-		  console.log(name);
 		  var dates = [];
 		  for(x in quotes["Time Series (Daily)"]){
 		  		dates.push(x);
@@ -49,10 +42,9 @@
 	      	console.log(low);
 	      	var close = iterate["4. close"];
 	      	console.log(close);
-	   
 
 		    database.ref("/quotes").push({
-		    	name: name,
+		    	name: symbol,
 		    	open: open,
 		    	high: high,
 		    	low: low,
@@ -86,7 +78,7 @@
 		// 	            console.log("getQuote: " + quotes[x].symbol + " [" + quotes[x].name + "] = " + JSON.stringify(quotes[x]));
 		// 	        }
 		// 	});
-		// });
+		});
 
 
 
@@ -110,14 +102,14 @@
 		    
 		    // Html updated
 		    // Appends variable data to document's html
-			// $("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
-			//   newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
-			// }, function(errorObject) {
-			// 	console.log("Errors handled: " + errorObject.code);
-			// });
-
+			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
+			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
+			}, function(errorObject) {
+				console.log("Errors handled: " + errorObject.code);
 		});
-// 	var GBP = 0;
+
+		
+// var GBP = 0;
 // var EUR = 0;
 // var CHF = 0;
 // var CAD = 0;
