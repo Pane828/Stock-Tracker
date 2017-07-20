@@ -49,16 +49,14 @@
 	      	console.log(low);
 	      	var close = iterate["4. close"];
 	      	console.log(close);
-	      	var volume = iterate["5. volume"];
-	      	console.log(volume);
+	   
 
 		    database.ref("/quotes").push({
 		    	name: name,
 		    	open: open,
 		    	high: high,
 		    	low: low,
-		    	close: close,
-		    	volume: volume
+		    	close: close
 		    });
 		});
 
@@ -90,46 +88,33 @@
 		// 	});
 		// });
 
-		// Save the returned data into variables
-		// var stockName = ;
-		// var stockPrice = ;
-		// var previousChange = ;
-		// var netChange = ;
-		// var percentChange = ;
-
-		// Push to firebase
-		// database.ref("/stockquotes").push({
-	 //        name: stockName,
-	 //        price: stockPrice,
-	 //        change: previousChange,
-	 //        net: netChange,
-	 //        percent: percentChange
-	 //    });
 
 
 		// Firebase updates the html
-		// database.ref("/stockquotes").on("child_added", function(childSnapshot) {
+		database.ref("/quotes").on("child_added", function(childSnapshot) {
 
-		// 	// Log everything that's coming out of snapshot
-		//     console.log(childSnapshot.val().name);
-		//     console.log(childSnapshot.val().price);
-		//     console.log(childSnapshot.val().change);
-		//     console.log(childSnapshot.val().net);
-		//     console.log(childSnapshot.val().percent);
+			// Log everything that's coming out of snapshot
+		    console.log(childSnapshot.val().name);
+		    console.log(childSnapshot.val().open);
+		    console.log(childSnapshot.val().high);
+		    console.log(childSnapshot.val().low);
+		    console.log(childSnapshot.val().close);
 
-		//     // Variables for object data
-		//     var newStockName = childSnapshot.val().name;
-		//     var newStockPrice = childSnapshot.val().price;
-		//     var newPreviousPrice = childSnapshot.val().change;
-		//     var newNetChange = childSnapshot.val().net;
-		//     var newPercentChange = childSnapshot.val().percent;
+		    // Variables for object data
+		    var newStockName = childSnapshot.val().name;
+		    var newOpenPrice = childSnapshot.val().open;
+		    var newHighPrice = childSnapshot.val().high;
+		    var newLowPrice = childSnapshot.val().low;
+		    var newClosePrice = childSnapshot.val().close;
+
 		    
-		//     // Html updated
-		//     // Appends variable data to document's html
-		// 	$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newStockPrice + "</td><td>" +
-		// 	  newPreviousPrice + "</td><td>" + newNetChange + "</td><td>" + newPercentChange);
-		// 	}, function(errorObject) {
-		// 		console.log("Errors handled: " + errorObject.code);
+		    // Html updated
+		    // Appends variable data to document's html
+			// $("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
+			//   newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
+			// }, function(errorObject) {
+			// 	console.log("Errors handled: " + errorObject.code);
+			// });
 
 		});
 // 	var GBP = 0;
