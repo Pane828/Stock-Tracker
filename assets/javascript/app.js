@@ -1,4 +1,4 @@
- $(document).ready(function() {
+  $(document).ready(function() {
 
 	var config = {
 		apiKey: "AIzaSyBv5UzhUipQ3IWhQH8A0tAzHeMa7KCkp7E",
@@ -28,13 +28,6 @@
         .done(function(response) {
 		  console.log(response);
 		  var quotes = response;
-		  var metaData = [];
-		  for(i in quotes["Meta Data"]) {
-		  	metaData.push(i);
-		  }
-		  var info = quotes["Meta Data"];
-		  var name = info["2. Symbol"];
-		  console.log(name);
 		  var dates = [];
 		  for(x in quotes["Time Series (Daily)"]){
 		  		dates.push(x);
@@ -89,48 +82,34 @@
 
 
 
+		// Firebase updates the html
 		database.ref("/quotes").on("child_added", function(childSnapshot) {
 
+			// Log everything that's coming out of snapshot
 		    console.log(childSnapshot.val().name);
 		    console.log(childSnapshot.val().open);
 		    console.log(childSnapshot.val().high);
 		    console.log(childSnapshot.val().low);
 		    console.log(childSnapshot.val().close);
 
+		    // Variables for object data
 		    var newStockName = childSnapshot.val().name;
 		    var newOpenPrice = childSnapshot.val().open;
 		    var newHighPrice = childSnapshot.val().high;
 		    var newLowPrice = childSnapshot.val().low;
 		    var newClosePrice = childSnapshot.val().close;
 
-  			if (childSnapshot.child("name").exists()) {
-
-    		newStockName = childSnapshot.val().name;
-    		newOpenPrice = parseInt(childSnapshot.val().open);
-    		newHighPrice = parseInt(childSnapshot.val().high);
-    		newLowPrice = parseInt(childSnapshot.val().low);
-    		newClosePrice = parseInt(childSnapshot.val().close);
-
-    		console.log(childSnapshot.val().name);
-			console.log(childSnapshot.val().open);
-
-			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
-			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
-			} else {
-
-
-			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
-			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
-			}
-
-    		console.log(childSnapshot.val().name);
-			console.log(childSnapshot.val().open);
-  });
 		    
+		    // Html updated
+		    // Appends variable data to document's html
+			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
+			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
 
+			}, function(errorObject) {
+				console.log("Errors handled: " + errorObject.code);
+		});
 });
-})
-
+  
 var GBP = 0;
 var EUR = 0;
 var CHF = 0;
