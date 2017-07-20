@@ -104,6 +104,7 @@
 		    // Appends variable data to document's html
 			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
 			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
+
 			}, function(errorObject) {
 				console.log("Errors handled: " + errorObject.code);
 		});
@@ -115,6 +116,7 @@ var CHF = 0;
 var CAD = 0;
 var RUB = 0;
 
+
 function CurrencyConverter() {
 
 	var endpoint = 'live';
@@ -123,6 +125,7 @@ function CurrencyConverter() {
 	var currencySelect = $(".currency").val().trim();
 	var quoterate = base + currencySelect;
 //	This is a placeholder for the amount that we are converting;
+
 
 	console.log(quoterate);
 
@@ -148,6 +151,7 @@ function CurrencyConverter() {
 
 function calculation () {
 
+
 //database.ref("/quotes").on("child_added", function(childSnapshot) {
 
 //var stockPrice = parseInt(childSnapshot.val().close);
@@ -171,4 +175,5 @@ var dropDown = $("#selectedC option:selected").val();
 		console.log(outPut);
 	}
 };
+
 
