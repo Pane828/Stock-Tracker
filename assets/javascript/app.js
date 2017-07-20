@@ -49,10 +49,9 @@
 	      	console.log(low);
 	      	var close = iterate["4. close"];
 	      	console.log(close);
-	   
 
 		    database.ref("/quotes").push({
-		    	name: name,
+		    	name: symbol,
 		    	open: open,
 		    	high: high,
 		    	low: low,
@@ -86,7 +85,7 @@
 		// 	            console.log("getQuote: " + quotes[x].symbol + " [" + quotes[x].name + "] = " + JSON.stringify(quotes[x]));
 		// 	        }
 		// 	});
-		// });
+		});
 
 
 
@@ -110,72 +109,71 @@
 		    
 		    // Html updated
 		    // Appends variable data to document's html
-			// $("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
-			//   newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
-			// }, function(errorObject) {
-			// 	console.log("Errors handled: " + errorObject.code);
-			// });
-
+			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
+			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
+			}, function(errorObject) {
+				console.log("Errors handled: " + errorObject.code);
 		});
-// 	var GBP = 0;
-// var EUR = 0;
-// var CHF = 0;
-// var CAD = 0;
-// var RUB = 0;
-// var stockPrice = 10;
+		
+var GBP = 0;
+var EUR = 0;
+var CHF = 0;
+var CAD = 0;
+var RUB = 0;
+var stockPrice = 10;
 
-// function CurrencyConverter() {
+function CurrencyConverter() {
 
-// 	var endpoint = 'live';
-// 	var access_key = '34f7aa0bec1b3e840bfec1a470ef081f';
-// 	var base = 'USD';
-// 	var currencySelect = $(".currency").val().trim();
-// 	var quoterate = base + currencySelect;
-// //	This is a placeholder for the amount that we are converting;
-// 	amount = '10';
+	var endpoint = 'live';
+	var access_key = '34f7aa0bec1b3e840bfec1a470ef081f';
+	var base = 'USD';
+	var currencySelect = $(".currency").val().trim();
+	var quoterate = base + currencySelect;
+//	This is a placeholder for the amount that we are converting;
+	amount = '10';
 
-// 	console.log(quoterate);
+	console.log(quoterate);
 
 
-// 	$.ajax({
-// 	    url: 'http://apilayer.net/api/' + endpoint + '?access_key=' + access_key,
-// 	    dataType: 'jsonp',
-// 	    success: function(json) {
-// 		GBP = json.quotes.USDGBP;
-// 		EUR = json.quotes.USDEUR;
-// 		CHF = json.quotes.USDCHF;
-// 		CAD = json.quotes.USDCAD;
-// 		RUB = json.quotes.USDRUB;
-// 	    console.log(json);
-// 	    console.log(GBP);  
-// 	    console.log(EUR);  
-// 	    console.log(CHF);  
-// 	    console.log(RUB);  
-// 	    console.log(CAD);                         
-// 	    }
-// 	})
-// };
+	$.ajax({
+	    url: 'http://apilayer.net/api/' + endpoint + '?access_key=' + access_key,
+	    dataType: 'jsonp',
+	    success: function(json) {
+		GBP = json.quotes.USDGBP;
+		EUR = json.quotes.USDEUR;
+		CHF = json.quotes.USDCHF;
+		CAD = json.quotes.USDCAD;
+		RUB = json.quotes.USDRUB;
+	    console.log(json);
+	    console.log(GBP);  
+	    console.log(EUR);  
+	    console.log(CHF);  
+	    console.log(RUB);  
+	    console.log(CAD);                         
+	    }
+	})
+};
 
-// function calculation () {
+function calculation () {
 
-// var dropDown = $("#selectedC option:selected").val();
+var dropDown = $("#selectedC option:selected").val();
 
-// 	if (dropDown == "RUB") {
-// 		outPut = RUB * stockPrice;
-// 		console.log(outPut);
-// 	} else if (dropDown == "CAD") {
-// 		outPut = CAD * stockPrice;
-// 		console.log(outPut);
-// 	} else if (dropDown == "CHF") {
-// 		outPut = CHF * stockPrice;
-// 		console.log(outPut);
-// 	} else if (dropDown == "EUR") {
-// 		outPut = EUR * stockPrice;
-// 		console.log(outPut);
-// 	} else if (dropDown == "GBP") {
-// 		outPut = GBP * stockPrice;
-// 		console.log(outPut);
-// 	}
-// };
+	if (dropDown == "RUB") {
+		outPut = RUB * stockPrice;
+		console.log(outPut);
+	} else if (dropDown == "CAD") {
+		outPut = CAD * stockPrice;
+		console.log(outPut);
+	} else if (dropDown == "CHF") {
+		outPut = CHF * stockPrice;
+		console.log(outPut);
+	} else if (dropDown == "EUR") {
+		outPut = EUR * stockPrice;
+		console.log(outPut);
+	} else if (dropDown == "GBP") {
+		outPut = GBP * stockPrice;
+		console.log(outPut);
+	}
+};
 
-// });
+});
