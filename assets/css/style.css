@@ -49,6 +49,11 @@ th,
 	margin: 0 auto;
 }
 
+.chartList {
+	height: 200px;
+	overflow: scroll;
+}
+
 @media only screen and (max-width: 600px) {
     /* For tablets: */
   	.font-effect-outline {
