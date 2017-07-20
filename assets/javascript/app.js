@@ -90,92 +90,106 @@
 
 
 
-		// Firebase updates the html
 		database.ref("/quotes").on("child_added", function(childSnapshot) {
 
-			// Log everything that's coming out of snapshot
 		    console.log(childSnapshot.val().name);
 		    console.log(childSnapshot.val().open);
 		    console.log(childSnapshot.val().high);
 		    console.log(childSnapshot.val().low);
 		    console.log(childSnapshot.val().close);
 
-		    // Variables for object data
 		    var newStockName = childSnapshot.val().name;
 		    var newOpenPrice = childSnapshot.val().open;
 		    var newHighPrice = childSnapshot.val().high;
 		    var newLowPrice = childSnapshot.val().low;
 		    var newClosePrice = childSnapshot.val().close;
 
+  			if (childSnapshot.child("name").exists()) {
+
+    		newStockName = childSnapshot.val().name;
+    		newOpenPrice = parseInt(childSnapshot.val().open);
+    		newHighPrice = parseInt(childSnapshot.val().high);
+    		newLowPrice = parseInt(childSnapshot.val().low);
+    		newClosePrice = parseInt(childSnapshot.val().close);
+
+    		console.log(childSnapshot.val().name);
+			console.log(childSnapshot.val().open);
+
+			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
+			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
+			} else {
+
+			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
+			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
+			}
+
+    		console.log(childSnapshot.val().name);
+			console.log(childSnapshot.val().open);
+  });
 		    
-		    // Html updated
-		    // Appends variable data to document's html
-			// $("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
-			//   newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
-			// }, function(errorObject) {
-			// 	console.log("Errors handled: " + errorObject.code);
-			// });
-
-		});
-// 	var GBP = 0;
-// var EUR = 0;
-// var CHF = 0;
-// var CAD = 0;
-// var RUB = 0;
-// var stockPrice = 10;
-
-// function CurrencyConverter() {
-
-// 	var endpoint = 'live';
-// 	var access_key = '34f7aa0bec1b3e840bfec1a470ef081f';
-// 	var base = 'USD';
-// 	var currencySelect = $(".currency").val().trim();
-// 	var quoterate = base + currencySelect;
-// //	This is a placeholder for the amount that we are converting;
-// 	amount = '10';
-
-// 	console.log(quoterate);
-
-
-// 	$.ajax({
-// 	    url: 'http://apilayer.net/api/' + endpoint + '?access_key=' + access_key,
-// 	    dataType: 'jsonp',
-// 	    success: function(json) {
-// 		GBP = json.quotes.USDGBP;
-// 		EUR = json.quotes.USDEUR;
-// 		CHF = json.quotes.USDCHF;
-// 		CAD = json.quotes.USDCAD;
-// 		RUB = json.quotes.USDRUB;
-// 	    console.log(json);
-// 	    console.log(GBP);  
-// 	    console.log(EUR);  
-// 	    console.log(CHF);  
-// 	    console.log(RUB);  
-// 	    console.log(CAD);                         
-// 	    }
-// 	})
-// };
-
-// function calculation () {
-
-// var dropDown = $("#selectedC option:selected").val();
-
-// 	if (dropDown == "RUB") {
-// 		outPut = RUB * stockPrice;
-// 		console.log(outPut);
-// 	} else if (dropDown == "CAD") {
-// 		outPut = CAD * stockPrice;
-// 		console.log(outPut);
-// 	} else if (dropDown == "CHF") {
-// 		outPut = CHF * stockPrice;
-// 		console.log(outPut);
-// 	} else if (dropDown == "EUR") {
-// 		outPut = EUR * stockPrice;
-// 		console.log(outPut);
-// 	} else if (dropDown == "GBP") {
-// 		outPut = GBP * stockPrice;
-// 		console.log(outPut);
-// 	}
-// };
-
 });
+})
+
+var GBP = 0;
+var EUR = 0;
+var CHF = 0;
+var CAD = 0;
+var RUB = 0;
+
+function CurrencyConverter() {
+
+	var endpoint = 'live';
+	var access_key = '34f7aa0bec1b3e840bfec1a470ef081f';
+	var base = 'USD';
+	var currencySelect = $(".currency").val().trim();
+	var quoterate = base + currencySelect;
+//	This is a placeholder for the amount that we are converting;
+
+	console.log(quoterate);
+
+
+	$.ajax({
+	    url: 'http://apilayer.net/api/' + endpoint + '?access_key=' + access_key,
+	    dataType: 'jsonp',
+	    success: function(json) {
+		GBP = json.quotes.USDGBP;
+		EUR = json.quotes.USDEUR;
+		CHF = json.quotes.USDCHF;
+		CAD = json.quotes.USDCAD;
+		RUB = json.quotes.USDRUB;
+	    console.log(json);
+	    console.log(GBP);  
+	    console.log(EUR);  
+	    console.log(CHF);  
+	    console.log(RUB);  
+	    console.log(CAD);                         
+	    }
+	});
+};
+
+function calculation () {
+
+//database.ref("/quotes").on("child_added", function(childSnapshot) {
+
+//var stockPrice = parseInt(childSnapshot.val().close);
+
+var dropDown = $("#selectedC option:selected").val();
+
+	if (dropDown == "RUB") {
+		outPut = RUB * stockPrice;
+		console.log(outPut);
+	} else if (dropDown == "CAD") {
+		outPut = CAD * stockPrice;
+		console.log(outPut);
+	} else if (dropDown == "CHF") {
+		outPut = CHF * stockPrice;
+		console.log(outPut);
+	} else if (dropDown == "EUR") {
+		outPut = EUR * stockPrice;
+		console.log(outPut);
+	} else if (dropDown == "GBP") {
+		outPut = GBP * stockPrice;
+		console.log(outPut);
+	}
+};
+
