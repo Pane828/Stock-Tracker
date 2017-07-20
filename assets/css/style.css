@@ -16,6 +16,7 @@ body, html {
 
 h1 {
 	font-family: 'Montserrat Subrayada', sans-serif;
+
   	font-size: 3em;
 }  
 
@@ -53,7 +54,6 @@ th,
 	height: 200px;
 	overflow: scroll;
 }
-
 @media only screen and (max-width: 600px) {
     /* For tablets: */
   	.font-effect-outline {

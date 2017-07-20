@@ -119,6 +119,7 @@
 			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
 			} else {
 
+
 			$("#quote-table > tbody").append("<tr><td>" + newStockName + "</td><td>" + newOpenPrice + "</td><td>" +
 			  newHighPrice + "</td><td>" + newLowPrice + "</td><td>" + newClosePrice);
 			}
