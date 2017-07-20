@@ -28,10 +28,11 @@
 				  <thead>
 				    <tr>
 				      <th>Stock Name</th>
-				      <th>Price</th>
-				      <th>Previous Change</th>
-				      <th>Net Change</th>
-				      <th>Percent Change</th>		      
+				      <th>Opening Value</th>
+				      <th>High</th>
+				      <th>Low</th>
+				      <th>Close</th>
+				      <th>Header</th>		      
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -70,12 +71,12 @@
 		              <h3 class="panel-title">Make Currency Conversion</h3>
 		            </div>
 		         <div class="panel-body">
-		         	<select>
-					  <option value="">British Pounds</option>
-					  <option value="">Euros</option>
-					  <option value="">Swiss Francs</option>
-					  <option value="">Canadian Dollars</option>
-					  <option value="">Russian Rubles</option>
+		         	<select id="selectedC">
+					  <option class="currency" value="GBP">British Pounds</option>
+					  <option class="currency" value="EUR">Euros</option>
+					  <option class="currency" value="CHF">Swiss Francs</option>
+					  <option class="currency" value="CAD">Canadian Dollars</option>
+					  <option class="currency" value="RUB">Russian Rubles</option>
 					</select>
 
 					<span>
